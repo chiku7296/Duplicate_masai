@@ -1,0 +1,3 @@
+a = create table bike(bike_id varchar(4),brand varchar(20), model varchar(20),price int);
+b = alter table bike modify  coulumn bike_id primary key;
+c =alter table bike ADD registration_date Date;

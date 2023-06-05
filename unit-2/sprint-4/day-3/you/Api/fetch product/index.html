@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 150px;
+        }
+        #body{
+            display: flex;
+            flex-direction: column;
+           justify-content: space-around;
+        }
+    </style>
+</head>
+<body >
+<a href="./page.html">Add page</a>
+<div id="body"></div>
+</body>
+<script>
+   tbody=document.getElementById("body")
+   const Api="https://fakestoreapi.com/products"
+
+   fetch(Api).then((res)=>{
+    return res.json()
+   }).then((data)=>{
+         display(data)
+   }).catch((data)=>{
+    console.log(data)
+   })
+   let qr=JSON.parse(localStorage.getItem("cart"))||[]
+
+   function display(pr){
+    tbody.innerHTML=""
+
+    for( let i=0;i<pr.length;i++){
+         tr=document.createElement("tr")
+         td1=document.createElement("img")
+         td2=document.createElement("td")
+         td3=document.createElement("td")
+         td4=document.createElement("td")
+         td5=document.createElement("td")
+         td6=document.createElement("td")
+         td7=document.createElement("td")
+         td8=document.createElement("td")
+         td9=document.createElement("button")
+
+         td1.setAttribute("src",pr[i].image)
+         td2.innerHTML=pr[i].id
+         td3.innerHTML=pr[i].title
+         td4.innerHTML=pr[i].price
+         td5.innerHTML=pr[i].description
+         td6.innerHTML=pr[i].category
+         td7.innerHTML=pr[i].rating.rate
+         td8.innerHTML=pr[i].rating.count
+         td9.innerHTML="Add cart"
+         
+         td9.addEventListener("click",function(){
+        qr.push(pr[i])
+        localStorage.setItem("click",JSON.stringify(qr))
+           
+    })
+        
+    
+      tr.append(td1,td2,td3,td4,td5,td6,td7,td8,td9)
+         tbody.append(tr)
+        
+    }
+   }
+  
+</script>
+</html>

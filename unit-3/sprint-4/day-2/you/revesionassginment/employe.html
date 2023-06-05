@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <style>
+          body{
+            margin: 0px;
+            display: grid;
+
+        }
+        nav{
+           display: flex;
+           justify-content: space-between;
+           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+           padding: 1%;
+           width: 98%;
+        }
+        nav>div:nth-child(2){
+            margin-top: 3vh;
+        }
+        nav>div:nth-child(2)>a{
+            margin-left: 6vw;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(23, 229, 240);
+            color: black;
+            font-size: 25px;
+            font-weight: 800;
+        }
+        .main>div{
+            
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+            width: 80%; 
+            padding-bottom: 10px;
+            padding-left: 10px;
+            margin-bottom: 2vh;
+            margin-left: 5vw;
+        }
+        .main{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        .btn{
+            display: flex;
+            gap: 20px;
+            margin:10vh 30vw;
+        }
+        .btn>button{
+            height: 70px;
+            width: 60px;
+            background-color: black;
+            color: wheat;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .btn>button:hover{
+            background-color:blue;
+        }
+        .logout{
+            margin-left: 80vw;
+            margin-bottom: 2vh;
+            height: 50px;
+            width: 150px;
+            font-size: 25px;
+            background-color:rgb(241, 34, 34);
+            color: white;
+            font-weight: 700;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+        }
+        .fundiv{
+            display: grid;
+            grid-template-rows: repeat(3,1fr);
+             margin-left: 5vw;
+             margin-bottom: 2vh;
+             gap: 30px;
+             width: 30%;
+        }
+        
+          
+        
+    </style>
+</head>
+<body id="body">
+    <nav >
+        <div>
+            <h2>Massai Employee Management System</h2>
+        </div>
+        <div>
+            <a href="./index.html">HOME</a>
+            <a href="./employe.html">Employee</a>
+        </div>
+      
+    </nav>
+    <select name="sort by salary" id="sort">
+        <option value="">sort by salary</option>
+        <option value="LtoH">Low to High</option>
+        <option value="HtoL">High to Low</option>
+        
+    </select>
+    <select id="filt">
+        <option value="">filter by department</option>
+        <option value="engineering">engineering</option>
+        <option value="finance">finance</option>
+        <option value="operations">operations</option>
+        <option value="marketing">marketing</option>
+        
+    </select>
+</body>
+</html>
+<script src="./employe.js"></script>

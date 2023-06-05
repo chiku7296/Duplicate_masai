@@ -1,0 +1,300 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "abcd",
+      "image": "image",
+      "department": "34",
+      "salary": "34554"
+    },
+    {
+      "id": 2,
+      "name": "Flossy Arrell",
+      "image": "/images/avatar/avatar1.jpeg",
+      "department": 2,
+      "salary": 20000
+    },
+    {
+      "id": 3,
+      "name": "Giorgio Antonioni",
+      "image": "/images/avatar/avatar1.jpeg",
+      "department": 3,
+      "salary": 95000
+    },
+    {
+      "name": "Himanshu",
+      "image": "/images/avatar/avatar2.jpeg",
+      "department": 4,
+      "salary": 100000,
+      "createdAt": 1670325954162,
+      "id": "tEYFrHNsdO"
+    },
+    {
+      "name": "John Doe",
+      "image": "/images/avatar/avatar1.jpeg",
+      "department": 1,
+      "salary": 80000,
+      "id": "R4dvtugCT2"
+    },
+    {
+      "createdAt": 1678983419696,
+      "id": "Bo3YVzJTwj"
+    },
+    {
+      "createdAt": 1678983586394,
+      "id": "RV9gI2a2zq"
+    },
+    {
+      "createdAt": 1678983588002,
+      "id": "mLE1DPHjkV"
+    },
+    {
+      "name": "pravesh",
+      "image": "image",
+      "department": "34",
+      "salary": "45",
+      "createdAt": 1678983753771,
+      "id": "Kb8krFBOUW"
+    },
+    {
+      "name": "pravesh",
+      "image": "imgae",
+      "department": "2",
+      "salary": "100",
+      "createdAt": 1678983955999,
+      "id": "HZjffMw9sQ"
+    },
+    {
+      "name": "rahul",
+      "image": "image",
+      "department": "10",
+      "salary": "110",
+      "createdAt": 1678984283851,
+      "id": "fg8aGwIdS2"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984695377,
+      "id": "N2aLZA1cMO"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984695992,
+      "id": "9AhwEkxGWl"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984696176,
+      "id": "zKLGmUcAPJ"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984696358,
+      "id": "AOK7uetGTe"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984696584,
+      "id": "9gw7c1r7At"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697031,
+      "id": "lorKt9dnGC"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697319,
+      "id": "8C2tF0xifO"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697476,
+      "id": "ylAiPJ3IQ2"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697631,
+      "id": "sio0KLomIy"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697813,
+      "id": "faGM7fe8er"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984697968,
+      "id": "GaszdQbobx"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984698185,
+      "id": "TqYu7Gk2eO"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984699016,
+      "id": "64XrpDGTUo"
+    },
+    {
+      "name": "pravesh",
+      "image": "image",
+      "department": "20",
+      "salary": "3000",
+      "createdAt": 1678984813905,
+      "id": "piEuwwXHdg"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678984818615,
+      "id": "AIWH73xcMS"
+    },
+    {
+      "name": "rajesh",
+      "image": "image ",
+      "department": "10",
+      "salary": "343",
+      "createdAt": 1678985424734,
+      "id": "BPRLrGkzB6"
+    },
+    {
+      "name": "rajesh",
+      "image": "image ",
+      "department": "10",
+      "salary": "343",
+      "createdAt": 1678985424736,
+      "id": "APIsPSSUF2"
+    },
+    {
+      "name": "rrr",
+      "image": "image",
+      "department": "8687",
+      "salary": "87987",
+      "createdAt": 1678986079586,
+      "id": "8q19XdI4z8"
+    },
+    {
+      "name": "rahul",
+      "image": "image",
+      "department": "435",
+      "salary": "435",
+      "createdAt": 1678986567522,
+      "id": "bDincVw7Th"
+    },
+    {
+      "name": "pra",
+      "image": "",
+      "department": "45",
+      "salary": "40000",
+      "createdAt": 1678986645118,
+      "id": "kA3wmTfZPL"
+    },
+    {
+      "name": "oiuo",
+      "image": "",
+      "department": "",
+      "salary": "9890",
+      "createdAt": 1678986685710,
+      "id": "BZLSNHKixm"
+    },
+    {
+      "name": "jkkj",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678986759526,
+      "id": "TasU1MeKpo"
+    },
+    {
+      "name": "klk",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678986812003,
+      "id": "Dn5zaaHric"
+    },
+    {
+      "name": "jj",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678986887821,
+      "id": "ShJJTBculA"
+    },
+    {
+      "name": "kkkk",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1678986979729,
+      "id": "NNjJKQhnbs"
+    },
+    {
+      "name": "ramesh",
+      "image": "image",
+      "department": "234",
+      "salary": "534",
+      "createdAt": 1679018219228,
+      "id": "y6qn4tuLFk"
+    },
+    {
+      "name": "p",
+      "image": "image",
+      "department": "456",
+      "salary": "4564464564",
+      "createdAt": 1679020250427,
+      "id": "0g9o0BuCEC"
+    },
+    {
+      "name": "",
+      "image": "",
+      "department": "",
+      "salary": "",
+      "createdAt": 1679024682921,
+      "id": "Rt9CmgBUG5"
+    }
+  ]
+}

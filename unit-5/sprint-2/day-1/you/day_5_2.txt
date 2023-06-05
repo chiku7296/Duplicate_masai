@@ -1,0 +1,105 @@
+mysql> create table Event(EventId int Primary key, Event varchar(50),DateEvent date, NumberPerfomers int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventId         | int         | NO   | PRI | NULL    |       |
+| Event           | varchar(50) | YES  |     | NULL    |       |
+| DateEvent       | date        | YES  |     | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
++-----------------+---------
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventId         | int         | NO   | PRI | NULL    |       |
+| Event           | varchar(50) | YES  |     | NULL    |       |
+| DateEvent       | date        | YES  |     | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table event modify EventName varchar(50) not Null;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table event modify DateEvent date not Null;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventId         | int         | NO   | PRI | NULL    |       |
+| EventName       | varchar(50) | NO   |     | NULL    |       |
+| DateEvent       | date        | NO   |     | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table event drop EventId;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table event add column EventId varchar(50);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventName       | varchar(50) | NO   |     | NULL    |       |
+| DateEvent       | date        | NO   |     | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
+| EventId         | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table event modify DateEvent date Unique Not Null;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventName       | varchar(50) | NO   |     | NULL    |       |
+| DateEvent       | date        | NO   | PRI | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
+| EventId         | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table event drop EventId;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventName       | varchar(50) | NO   |     | NULL    |       |
+| DateEvent       | date        | NO   | PRI | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+mysql> alter table event add column id int ;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc event;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| EventName       | varchar(50) | NO   |     | NULL    |       |
+| DateEvent       | date        | NO   | PRI | NULL    |       |
+| NumberPerfomers | int         | YES  |     | NULL    |       |
+| Address         | varchar(10) | YES  |     | NULL    |       |
+| id              | int         | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)

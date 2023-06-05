@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 150px;
+        }
+    </style>
+</head>
+<body >
+    <a href="./index.html">main page</a>
+    <div id="body"></div>
+
+</body>
+<script>
+      tbody=document.getElementById("body")
+   
+ 
+    let qr=JSON.parse(localStorage.getItem("click"))||[]
+    display(qr)
+    function display(pr){
+        tbody.innerHTML=""
+        for( let i=0;i<pr.length;i++){
+   tr=document.createElement("tr")
+   td1=document.createElement("img")
+   td2=document.createElement("td")
+   td3=document.createElement("td")
+   td4=document.createElement("td")
+   td5=document.createElement("td")
+   td6=document.createElement("td")
+   td7=document.createElement("td")
+   td8=document.createElement("td")
+  
+
+   td1.setAttribute("src",pr[i].image)
+   td2.innerHTML=pr[i].id
+   td3.innerHTML=pr[i].title
+   td4.innerHTML=pr[i].description
+   td5.innerHTML=pr[i].category
+   td6.innerHTML=pr[i].rating.rate
+   td7.innerHTML=pr[i].rating.count
+   td8.innerHTML=pr[i].price
+   
+   
+   tr.append(td1,td2,td8,td3,td4,td5,td6,td7)
+   tbody.append(tr)
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign up Page</title>
+  <style>
+      /* Write all necessery css here  */
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="./index.html">Signup</a>
+    <a href="./signin.html">Signin</a>
+  </div>
+  <div id="signup">
+    <h1>Please Enter Your Details</h1>
+    <form>
+      <input type="text" id="name">
+      <input type="email" id="email">
+      <input type="password"  id="password">
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</body>
+<script>
+  let ar=[]
+  if(ar==null){
+    ar=JSON.parse(localStorage.getItem("account-data"))
+  }
+  myform=document.getElementById("signup")
+  namel=document.getElementById("name")
+  emails=document.getElementById("email")
+  pswd=document.getElementById("password")
+ 
+  let obj={
+    n:"",
+    e:"",
+    p:""
+  }
+  myform.addEventListener("submit",function(e){
+    
+      e.preventDefault()
+
+  obj.n=namel.value
+  obj.e=emails.value
+  obj.p=pswd.value
+  ar.push(obj)
+  
+    localStorage.setItem("account-data",JSON.stringify(ar))
+    
+     
+  })
+</script>
+
+</html>

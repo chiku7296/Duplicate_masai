@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <style>
+      img{
+        width: 100px;
+      }
+      #cart-container{
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Masai E-Commerce</h1>
+      <a href="./index.html">Home</a>
+      <a href="./cart.html">Cart</a>
+    </div>
+    <h1 id="total">Your Total cart Price is:- <span id="cart-total">0</span></h1>
+    <div id="cart-container">
+      
+    </div>
+  </body>
+  <script>
+    qr=JSON.parse(localStorage.getItem("cart"))||[]
+  
+  display(qr)
+
+  
+  
+   function display(pr){
+    
+    h1=document.getElementById("total")
+  span=document.getElementById("cart-total")
+    piv=document.getElementById("cart-container")
+    piv.innerHTML=""
+    let sum=0
+    for(let i=0;i<pr.length;i++){
+      sum+=pr[i].quantity*pr[i].price
+    di=document.createElement("div")
+    imge=document.createElement("img")
+    h2=document.createElement("h2")
+    h3=document.createElement("h3")
+    p1=document.createElement("p")
+    p2=document.createElement("h3")
+    btn=document.createElement("button")
+    btn1=document.createElement("button")
+    qunt=document.createElement("span")
+    btn2=document.createElement("button")
+    
+    // liv=document.createElement("div")
+    span.innerHTML=sum
+    imge.src=pr[i].img  
+    h2.innerHTML=pr[i].brand
+    h3.innerHTML=pr[i].price
+    p1.innerHTML=pr[i].details
+    p2.innerHTML= "Category:-"+ pr[i].category
+    btn.innerHTML="Remove"
+    btn1.innerHTML="+"
+    btn2.innerHTML="-"
+    qunt.innerHTML=pr[i].quantity
+    
+
+    btn.addEventListener("click",function(){
+      lr=qr.filter((ele)=>{
+        if(pr[i]==ele){
+          return false
+        }
+           else{
+          return true
+           }
+      })
+      display(lr)
+      localStorage.setItem("cart",JSON.stringify(lr))
+    })
+    
+    btn1.addEventListener("click",function(){
+      
+      qr.map((ele)=>{
+        if(pr[i].id==ele.id){
+            ele.quantity++
+         return  ele.quantity
+           
+        }
+      })
+      display(qr)
+    
+      localStorage.setItem("cart",JSON.stringify(qr))
+    })
+
+        
+    
+    btn2.addEventListener("click",function(){
+      // console.log(qunt)
+      qr.map((ele)=>{
+        if(pr[i].id==ele.id){
+          ele.quantity--
+            if(ele.quantity<1){
+              ele.quantity=1
+            }
+         return  ele.quantity
+           
+        }
+      })
+      display(qr)
+    
+      localStorage.setItem("cart",JSON.stringify(qr))
+    })
+    
+    
+      h1.append(span)
+      di.append(imge,h2,h3,p1,p2,btn2,qunt,btn1,btn)
+    piv.append(di)
+
+    }
+    
+   }
+  </script>
+</html>

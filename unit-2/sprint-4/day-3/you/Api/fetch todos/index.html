@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="body">
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>status</th>
+        </tr>
+    </div>
+</body>
+<script>
+    tbody=document.getElementById("body")
+    
+   const Api="https://jsonplaceholder.typicode.com/todos"
+   fetch(Api).then((res)=>{
+    return res.json()
+   }).then((data)=>{
+    display(data)
+   }).catch((data)=>{
+    console.log(data)
+   })
+    function display(pr){
+        tbody.innerHTML=""
+        for(let i=0; i<pr.length;i++){
+            tr=document.createElement("tr")
+            td1=document.createElement("td")
+            td2=document.createElement("td")
+            td3=document.createElement("td")
+
+            td1.innerHTML=pr[i].id
+            td2.innerHTML=pr[i].title
+            td3.innerHTML=pr[i].completed
+
+           tr.append(td1,td2,td3)
+           tbody.append(tr)
+
+
+        }
+    }
+</script>
+</html>

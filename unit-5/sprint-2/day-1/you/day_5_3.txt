@@ -1,0 +1,213 @@
+mysql> create table Deposit(actNo varchar(25), cName varchar(20),bName varchar(20) ,amount int , aDate date);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Deposit
+    -> ;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| actNo  | varchar(25) | YES  |     | NULL    |       |
+| cName  | varchar(20) | YES  |     | NULL    |       |
+| bName  | varchar(20) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
+| aDate  | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> create table customer(cName varchar(20) ,city varchar(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc customer;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cName | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+mysql> create table Borrow(loanNo varchar(5), cName varchar(20),bName varchar(20), amount int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc borrow;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| loanNo | varchar(5)  | YES  |     | NULL    |       |
+| cName  | varchar(20) | YES  |     | NULL    |       |
+| bName  | varchar(20) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into deposit values(101,'sunil', 'mgroad',5000.00,'1996-01-04');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into deposit values(102,'rahul', 'karolbagh',3500.00,'1995-11-17');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into deposit values(103,'madhuri', 'chandni',1200.00,'1995-12-17');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into deposit values(104,'pramod', 'mgroad',3000.00,'1996-04-27');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into deposit values(105,'sandip', 'karolbagh',2000.00,'1996-04-31');
+ERROR 1292 (22007): Incorrect date value: '1996-04-31' for column 'aDate' at row 1
+mysql> desc deposit;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| actNo  | varchar(25) | YES  |     | NULL    |       |
+| cName  | varchar(20) | YES  |     | NULL    |       |
+| bName  | varchar(20) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
+| aDate  | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from deposit;
++-------+---------+-----------+--------+------------+
+| actNo | cName   | bName     | amount | aDate      |
++-------+---------+-----------+--------+------------+
+| 100   | Anil    | vrce      |   1000 | 1995-04-01 |
+| 101   | sunil   | mgroad    |   5000 | 1996-01-04 |
+| 102   | rahul   | karolbagh |   3500 | 1995-11-17 |
+| 103   | madhuri | chandni   |   1200 | 1995-12-17 |
+| 104   | pramod  | mgroad    |   3000 | 1996-04-27 |
++-------+---------+-----------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> desc branch
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bName | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into branch values('vrce','nagpur');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values('karolbagh','delhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values('chandni','delhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values('mgroad','banglore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from branch;
++-----------+----------+
+| bName     | city     |
++-----------+----------+
+| vrce      | nagpur   |
+| karolbagh | delhi    |
+| chandni   | delhi    |
+| mgroad    | banglore |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into customer('anil', 'calcuta');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''anil', 'calcuta')' at line 1
+mysql> insert into customer values('anil', 'calcuta');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values('rahul', 'baroda');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values('madhuri', 'nagpur');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values('pramod', 'nagpur');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values('sunil', 'delhi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
++---------+---------+
+| cName   | city    |
++---------+---------+
+| anil    | calcuta |
+| rahul   | baroda  |
+| madhuri | nagpur  |
+| pramod  | nagpur  |
+| sunil   | delhi   |
++---------+---------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into borrow values(201,'anil','vrce',1000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into borrow values(206,'rahul','karolbagh',5000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into borrow values(311,'sunil','mgroad',3000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into borrow values(321,'madhuri','chandni',2000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into borrow values(375,'pramod','mgroad',8000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from borrow;
++--------+---------+-----------+--------+
+| loanNo | cName   | bName     | amount |
++--------+---------+-----------+--------+
+| 201    | anil    | vrce      |   1000 |
+| 206    | rahul   | karolbagh |   5000 |
+| 311    | sunil   | mgroad    |   3000 |
+| 321    | madhuri | chandni   |   2000 |
+| 375    | pramod  | mgroad    |   8000 |
++--------+---------+-----------+--------+
+5 rows in set (0.00 sec)
+mysql> select * from borrow where amount>=2000 and amount<=5000;
++--------+---------+-----------+--------+
+| loanNo | cName   | bName     | amount |
++--------+---------+-----------+--------+
+| 206    | rahul   | karolbagh |   5000 |
+| 311    | sunil   | mgroad    |   3000 |
+| 321    | madhuri | chandni   |   2000 |
++--------+---------+-----------+--------+
+3 rows in set (0.00 sec)
+mysql> select * from deposit;
++-------+---------+-----------+--------+------------+
+| actNo | cName   | bName     | amount | aDate      |
++-------+---------+-----------+--------+------------+
+| 100   | Anil    | vrce      |   1000 | 1995-04-01 |
+| 101   | sunil   | mgroad    |   5000 | 1996-01-04 |
+| 102   | rahul   | karolbagh |   3500 | 1995-11-17 |
+| 103   | madhuri | chandni   |   1200 | 1995-12-17 |
+| 104   | pramod  | mgroad    |   3000 | 1996-04-27 |
++-------+---------+-----------+--------+------------+
+5 rows in set (0.00 sec)
+mysql> select * from customer where city='nagpur';
++---------+--------+
+| cName   | city   |
++---------+--------+
+| madhuri | nagpur |
+| pramod  | nagpur |
++---------+--------+
+mysql> select * from deposit where aDate>'1995-11-17';
++-------+---------+---------+--------+------------+
+| actNo | cName   | bName   | amount | aDate      |
++-------+---------+---------+--------+------------+
+| 101   | sunil   | mgroad  |   5000 | 1996-01-04 |
+| 103   | madhuri | chandni |   1200 | 1995-12-17 |
+| 104   | pramod  | mgroad  |   3000 | 1996-04-27 |
++-------+---------+---------+--------+------------+
+3 rows in set (0.00 sec)
+mysql> select actNo,amount from deposit where aDate>'1995-12-01' and aDate<'1996-06-01';
++-------+--------+
+| actNo | amount |
++-------+--------+
+| 101   |   5000 |
+| 103   |   1200 |
+| 104   |   3000 |
++-------+--------+
+3 rows in set (0.00 sec)
+

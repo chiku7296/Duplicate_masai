@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in Page</title>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="./index.html">Signup</a>
+      <a href="./signin.html">Signin</a>
+    </div>
+    <div id="signin">
+      <h1 id="heading">Please Enter Your Details</h1>
+      <form>
+        <input type="email" id="email" />
+        <input type="password" id="password" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+  <script>
+    ema=document.getElementById("email")
+    prd=document.getElementById("password")
+    myfm=document.getElementById("signin")
+    h1=document.getElementById("heading")
+   let pr=JSON.parse(localStorage.getItem("account-data"))
+    myfm.addEventListener("submit",function(e){
+        e.preventDefault()
+        if(pr[0].e==ema.value && pr[0].p==prd.value){
+          h1.innerHTML="Sign in Successful"
+        }
+        else{
+          h1.innerHTML="Wrong Credentials"
+        }
+      
+    })
+  </script>
+</html>

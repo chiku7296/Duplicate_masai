@@ -1,0 +1,9 @@
+.assignments {
+display: flex;
+gap: 50px;
+}
+@media only screen and (max-width:900px) {
+    .assignments{
+        flex-direction: column;
+    }
+}

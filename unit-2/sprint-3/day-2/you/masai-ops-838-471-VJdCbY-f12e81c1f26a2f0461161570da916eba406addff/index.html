@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Masai Games</title>
+  </head>
+  <body>
+    <div id="min"></div>
+    <div id="max"></div>
+    <div id="score"></div>
+  
+    <div id="keypad">
+      <button>0</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+    </div>
+    
+    <button id="enter">ENTER</button>
+  </body>
+  <script>
+    flag=true;
+    let  min=Infinity
+    let  max=-Infinity
+    en=document.getElementById("enter")
+    en.addEventListener("click",function (){
+      
+      
+  
+      if(Number(first)<min){
+        min=Number(first)
+        document.getElementById("min").innerHTML=Number(min)
+      }
+    
+        if (Number(first)>max){
+        max=Number(first)
+        document.getElementById("max").innerHTML=Number(max)
+      }
+      first=""
+       document.getElementById("score").innerHTML=Number(first)
+      
+    })
+   first=""
+    num=document.querySelectorAll("#keypad>button")
+    for(let i=0;i<num.length;i++){
+      
+      num[i]. addEventListener("click",function (){
+        if(flag===true){
+        first=first+num[i].innerHTML
+        document.getElementById("score").innerHTML=first
+
+        }
+       
+      })
+    }
+  
+
+   
+  </script>
+</html>

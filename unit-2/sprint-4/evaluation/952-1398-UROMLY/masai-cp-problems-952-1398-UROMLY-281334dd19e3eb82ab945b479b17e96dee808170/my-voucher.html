@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Voucher Page</title>
+    <style>
+         #voucher-container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 30px;
+      }
+      #voucher-container>div{
+        width: 90%;
+        text-align: left;
+      }
+      img{
+        width: 100%;
+      }
+      button{
+        font-size: 20px;
+        text-align: center;
+        padding: 6px 15px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Voucher Shop</h1>
+      <a href="./index.html">Home</a>
+      <a href="./my-voucher.html">My Voucher</a>
+    </div>
+    <h1 id="total">
+      Your total order value is :- <span id="order-total">0</span>
+    </h1>
+    <div id="cupon">
+      <input placeholder="Cupon:- Masai30" type="text" id="inp" />
+      <button>Add Cupon</button>
+    </div>
+    <div id="voucher-container">
+      <!-- Here Append All the Favourites-->
+    </div>
+  </body>
+  <script>
+   btn2=document.getElementById("cupon")
+    inp=document.getElementById("inp")
+    flag=true;
+   btn2.addEventListener("click",function(){
+    if(inp.value==""){
+      
+    }
+    else if(inp.value=="Massai30" && flag==true){
+      total.innerHTML=Math.floor(total.innerHTML*0.7)
+      flag=false
+    }
+    
+   })
+    qr=JSON.parse(localStorage.getItem("vouchers"))||[]
+    display(qr)
+    function display(pr){
+      let sum=0
+     h1=document.getElementById("total")
+      total=document.getElementById("order-total")
+      cont=document.getElementById("voucher-container")
+      h1.append(total)
+      cont.innerHTML=""
+      for(let i=0;i<pr.length;i++){
+        sum+=pr[i].price
+        div=document.createElement("div")
+        image=document.createElement("img")
+        nam=document.createElement("h1")
+        price=document.createElement("h3")
+        btn=document.createElement("button")
+
+       
+         total.innerHTML=sum
+        image.src=pr[i].image
+        nam.innerHTML=pr[i].name
+        price.innerHTML=pr[i].price
+         btn.innerHTML="Delete"
+        btn.addEventListener("click",function(){
+              lr= qr.filter((ele)=>{
+                if(ele.name==pr[i].name){
+                    return false
+                    // console.log(ele.name)
+                }
+                else{
+                  return true
+                }
+                
+               })
+               localStorage.setItem("vouchers",JSON.stringify(lr))
+               qr=JSON.parse(localStorage.getItem("vouchers"))||[]
+               
+
+               display(lr)
+               
+        })
+       div.append(image,nam,price,btn)
+       cont.append(div)
+
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Movie App</title>
+    <style>
+    #serach{
+      margin: 1vh 0vw 0vw 40vw;
+      
+    }
+    #movie_container{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      justify-content: space-between;
+      margin-left: 5vw;
+    }
+    
+   
+    
+    </style>
+  </head>
+  <body>
+    <div id="serach">
+      <input type="text" id="search-inp" placeholder="Search"/>
+      <button id="search-btn">Search</button>
+    </div>
+    <div id="movie_container">
+
+    </div>
+  </body>
+
+  <script>
+    p=document.getElementById("serach")
+    // tbody=document.getElementById("body")
+    search=document.getElementById("search-inp")
+    btn=document.getElementById("search-btn")
+    di=document.getElementById("movie_container")
+    // let res=[]      
+    
+    // http://www.omdbapi.com/?i=tt3896198&apikey=3c7a41ab
+    // https://www.omdbapi.com/?apiKey=<apiKey>&s=<searchQuery>
+    //  APIURL="https://www.omdbapi.com/?t=""&apikey=3c7a41ab"
+    //  let a="https://www.omdbapi.com/?t="
+    //  let b="avenger"
+    //  let c="&apikey=3c7a41ab"
+    //  let  APIURL=a+b+c
+    //  console.log(APIURL)
+    // fetch(APIURL).then((data)=>{
+    //   // console.log(search.value)
+    //   // https://www.omdbapi.com/?apiKey=<apiKey>&s=<searchQuery>
+    //   return data.json()
+    // }).then((re)=>{
+    //   res.push(re)
+    //   display(res)
+    // }).catch((err)=>{
+    //   console.log(err)
+    
+    // })
+    function er(){
+      di.innerHTML=""
+      
+      h2=document.createElement("h2")
+      // div.style.class="error-container"
+      // div.style.textAlign="center"
+      h2.innerHTML="Movie not found!"
+      h2.setAttribute("class","error-container")
+      di.append(h2)
+      // tbody.append(div)
+
+    }
+    btn.addEventListener("click",function(){
+      let a="https://www.omdbapi.com/?apiKey="
+      // https://www.omdbapi.com/?apiKey=3c7a41ab&s=avengers
+     let b=search.value
+     let c="3c7a41ab&s="
+     let  APIURL=a+c+b
+// console.log(APIURL)
+      fetch(APIURL).then((data)=>{
+      // console.log(search.value)
+      // https://www.omdbapi.com/?apiKey=<apiKey>&s=<searchQuery>
+      return data.json()
+    }).then((re)=>{
+      res=re.Search
+      display(res)
+    }).catch((err)=>{
+      er()
+    
+    })
+      // console.log(search.value)
+      //  di.innerHTML=""
+      // lr=res.filter((ele)=>{
+      //   if(ele.Title==search.value){
+      //     return ele
+      //   }
+      //   else{
+      //     return false
+      //   }
+      // })
+      
+      //   if(lr==null){
+      //   er()
+      //   }
+      
+      // else{
+      // display(lr)
+      // }
+      
+    })
+      
+     
+  
+
+    function display(pr){
+      di.innerHTML=""
+      for(let i=0;i<pr.length;i++){
+        
+        div=document.createElement("div")
+      img=document.createElement("img")
+      img.setAttribute("class","poster")
+      img.style.width="90%"
+      h2=document.createElement("h2")
+      h2.setAttribute("class","title")
+
+      img.setAttribute("src",pr[i].Poster)
+      h2.innerHTML=pr[i].Title
+      div.append(img,h2)
+      di.append(div)
+      // tbody.append(di)
+      }
+    }
+  </script>
+</html>

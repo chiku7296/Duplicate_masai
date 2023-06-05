@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      #voucher-container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 30px;
+      }
+      #voucher-container>div{
+        width: 90%;
+        text-align: left;
+      }
+      img{
+        width: 100%;
+      }
+      button{
+        font-size: 20px;
+        text-align: center;
+        padding: 6px 15px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Voucher Shop</h1>
+      <a href="./index.html">Home</a>
+      <a href="./my-voucher.html">My Voucher</a>
+    </div>
+    <div id="filter">
+      <h3>Filter By Price Range</h3>
+      <input placeholder="From" type="number" id="lower" />
+      <input placeholder="To" type="number" id="upper" />
+      <button id="filter-btn">Filter</button>
+    </div>
+    <div id="voucher-container">
+      <!-- Here Append All the Vouchers  -->
+    </div>
+  </body>
+  <script>
+
+    qr=JSON.parse(localStorage.getItem("vouchers"))||[]
+    let Api="https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-vouchers"
+    fetchdata()
+    async function fetchdata(){
+      try {
+        re=await fetch(Api);
+        res=await re.json()
+        gata=res.data[0].vouchers
+        display(gata);
+      
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    function display(pr){
+      cont=document.getElementById("voucher-container")
+      for(let i=0;i<pr.length;i++){
+        div=document.createElement("div")
+        image=document.createElement("img")
+        nam=document.createElement("h1")
+        price=document.createElement("h3")
+        btn=document.createElement("button")
+
+        image.src=pr[i].image
+        nam.innerHTML=pr[i].name
+        price.innerHTML=pr[i].price
+         btn.innerHTML="Buy"
+        btn.addEventListener("click",function(){
+              lr= gata.filter((ele)=>{
+                if(ele.name==pr[i].name){
+                    qr.push(ele)
+                    // console.log(ele.name)
+                  
+                }
+               })
+               localStorage.setItem("vouchers",JSON.stringify(qr))
+        })
+       div.append(image,nam,price,btn)
+       cont.append(div)
+
+      }
+    }
+    filt=document.getElementById("filter-btn")
+    low=document.getElementById("lower")
+    up=document.getElementById("upper")
+    filt.addEventListener("click",function(){
+      lr=gata.filter((ele)=>{
+        if(ele.price>=low.vlaue && ele.price<=up.value){
+          console.log(ele)
+          // return ele
+        }
+        else{
+          console.log("ok")
+        }
+      })
+    })
+
+  </script>
+</html>

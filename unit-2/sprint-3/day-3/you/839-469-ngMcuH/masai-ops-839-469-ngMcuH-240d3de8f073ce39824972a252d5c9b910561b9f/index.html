@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Masai Employee Records</title>
+  </head>
+  <body>
+    <!-- Use this form for taking the inputs  -->
+    <form>
+      <input placeholder="Name" type="text" id="name" />
+      <input placeholder="Employee ID" type="text" id="employee_id" />
+      <select id="department">
+        <option value="">Select Department</option>
+        <option value="HR">HR</option>
+        <option value="Finance">Finance</option>
+        <option value="Engineering">Engineering</option>
+      </select>
+      <input placeholder="Experience" type="number" id="experience" />
+      <input placeholder="Email" type="email" id="email" />
+      <input placeholder="Mobile No." type="number" id="mobile" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Use this select tag for filtering  -->
+    <select id="filter">
+      <option value="">Select Department</option>
+      <option value="HR">HR</option>
+      <option value="Finance">Finance</option>
+      <option value="Engineering">Engineering</option>
+    </select>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Employee ID</th>
+          <th>Department</th>
+          <th>Experience in Years</th>
+          <th>Email</th>
+          <th>Mobile No</th>
+          <th>Role</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Append Rows here using JS & DOM  -->
+      </tbody>
+    </table>
+  </body>
+  <script>
+myform=document.querySelector("form")
+tbody=document.querySelector("tbody")
+nam=document.getElementById("name")
+
+docid=document.getElementById("employee_id")
+
+spl=document.getElementById("department")
+exp=document.getElementById("experience")
+email=document.getElementById("email")
+mobile=document.getElementById("mobile")
+
+
+
+myform.addEventListener("submit",function (e){
+e.preventDefault()
+let ar=[]
+
+let obj={
+  name:nam.value,
+  docid:docid.value,
+  spl:spl.value,
+  exp:exp.value,
+  email:email.value,
+  mobile:mobile.value,
+}
+
+ar.push(obj)
+
+
+
+
+td0=document.createElement("td")
+td2=document.createElement("td")
+td3=document.createElement("td")
+td4=document.createElement("td")
+td5=document.createElement("td")
+td6=document.createElement("td")
+td7=document.createElement("td")
+td8=document.createElement("button")
+for(let i=0;i<ar.length;i++){
+  tr=document.createElement("tr")
+  td0.innerHTML=ar[i].name
+  td2.innerHTML=ar[i].docid
+  td3.innerHTML=ar[i].spl
+  td4.innerHTML=ar[i].exp
+  td5.innerHTML=ar[i].email
+  td6.innerHTML=ar[i].mobile
+  if(ar[i].exp>5){
+  td7.innerHTML="Senior"
+  }
+  else if (ar[i].exp>2 && ar[i].exp<5){
+    td7.innerHTML="Junior"
+  }
+  else if(ar[i].exp==""){
+    td7.innerHTML=""
+  }
+  else if (ar[i].exp<=1){
+    td7.innerHTML="Trainee"
+  }
+  
+ 
+ 
+ 
+}
+tr.append(td0,td2,td3,td4,td5,td6,td7,td8)
+  tbody.append(tr)
+  
+td8.addEventListener("click",function(){
+  tr.innerHTML=""
+  
+
+  
+    
+  })
+  td8.innerHTML="Delete"
+  td8.style.backgroundColor="red"
+
+
+  
+
+})
+  </script>
+</html>

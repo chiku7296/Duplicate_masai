@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      img{
+        width: 100px;
+      }
+      #product-container{
+        display: grid;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Masai E-Commerce</h1>
+      <a href="./index.html">Home</a>
+      <a href="./cart.html">Cart</a>
+    </div>
+    <!-- Use this Select Tag for Filtering the Products  -->
+    <select id="filter">
+      <option value="">Filter By Category</option>
+      <option value="Laptop">Laptop</option>
+      <option value="Mobile">Mobile</option>
+      <option value="Speakers">Speakers</option>
+    </select>
+    <div id="product-container">
+      <!-- Here Append All the Products  -->
+    </div>
+  </body>
+  <script>
+    const Api="https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products"
+    fetchdata();
+    async function fetchdata(){
+      try {
+        res=await fetch(Api)
+        data= await res.json()
+        ft=data
+        jr=ft.data
+        display(jr)
+      
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  qr=JSON.parse(localStorage.getItem("cart"))||[]
+  
+  select=document.getElementById("filter")
+  div=document.getElementById("product-container")
+   function display(pr){
+    div.innerHTML=""
+    for(let i=0;i<pr.length;i++){
+    di=document.createElement("div")
+    imge=document.createElement("img")
+    h2=document.createElement("h2")
+    h3=document.createElement("h3")
+    p1=document.createElement("p")
+    p2=document.createElement("p")
+    btn=document.createElement("button")
+
+    imge.setAttribute("src",pr[i].img)
+    h2.innerHTML=pr[i].brand
+    h3.innerHTML=pr[i].price
+    p1.innerHTML=pr[i].details
+    p2.innerHTML=pr[i].category
+    btn.innerHTML="Add To Cart"
+    btn.addEventListener("click",function(){
+      
+      flag=true;
+    if(qr.length==0){
+      pr[i].quantity=1
+      qr.push(pr[i])
+      alert("Product Added To Cart")
+      localStorage.setItem("cart",JSON.stringify(qr))
+    }
+    
+    else   {
+      
+      for(let j=0;j<qr.length;j++){
+        if(pr[i].id==qr[j].id){
+          alert("Product Already in Cart")
+          flag=false;
+          break;
+        }
+      }
+    
+        if(flag==true){
+          alert("Product Added To Cart")
+          pr[i].quantity=1
+          qr.push(pr[i])
+          localStorage.setItem("cart",JSON.stringify(qr))
+        }
+        } 
+      })
+      di.append(imge,h2,h3,p1,p2,btn)
+    div.append(di)
+
+    }
+    
+   }
+      select.addEventListener("change",function(){
+      
+        if(select.value=="Laptop"){
+        lr=jr.filter((ele)=>{
+            if(ele.category=="Laptop"){
+              return ele
+            }
+          })
+          
+          display(lr)
+        } 
+        else if(select.value=="Mobile"){
+        lr=jr.filter((ele)=>{
+            if(ele.category=="Mobile"){
+              return ele
+            }
+          })
+          display(lr)
+        }
+        else if(select.value=="Speakers"){
+        lr=jr.filter((ele)=>{
+            if(ele.category=="Speakers"){
+              return ele
+            }
+          })
+          display(lr)
+        }
+        else{
+          display(jr)
+        }
+      }) 
+      
+        
+      
+       
+        
+      
+      
+    
+   
+    
+      
+     
+      
+   
+    
+  
+  </script>
+</html>

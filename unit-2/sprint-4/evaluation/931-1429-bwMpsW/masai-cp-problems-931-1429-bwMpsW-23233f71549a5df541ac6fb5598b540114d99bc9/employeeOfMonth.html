@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee of Month Page</title>
+    <style>
+       #employees{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-content: space-between;
+        margin: 5vh 0vw 5vh 5vw;
+        gap: 27px;
+      }
+      #employees>div{
+        width: 100%;
+        text-align: left;
+        padding: 1vw;
+      
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+     
+      button{
+        background-color:red;
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px 30px 10px 30px;
+        border: none;
+        border-radius: 5px;
+        margin-left: 8vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Employee List</h1>
+      <a href="./index.html">Home</a>
+      <a href="./employeeOfMonth.html">Emplyee Of Month</a>
+    </div>
+    <div id="employees">
+      <!-- Here Append All the Vouchers  -->
+    </div>
+  </body>
+  <script>
+    gr=JSON.parse(localStorage.getItem("employees-ls"))||[]
+    // qr=JSON.parse(localStorage.getItem("employees-ls"))||[]
+    display(gr)
+
+
+   function display(pr){
+    div=document.getElementById("employees")
+    div.innerHTML=""
+    for(let i=0;i<pr.length;i++){
+      di=document.createElement("div")
+      // image=document.createElement("img")
+      nam=document.createElement("h2")
+      salery=document.createElement("h3")
+       gender=document.createElement("h5")
+       depart=document.createElement("h5")
+       button=document.createElement("button")
+
+      //  image.setAttribute("src",pr[i].image)
+       nam.innerHTML=pr[i].name
+       salery.innerHTML="$"+pr[i].salary
+       gender.innerHTML= "Gender"+":-"+pr[i].gender
+       depart.innerHTML= "Department"+":-"+pr[i].department
+       button.innerHTML="Delete"
+       
+       di.append(nam,salery,gender,depart,button)
+       div.append(di)
+
+       button.addEventListener("click",function(){
+        lr=pr.filter((ele)=>{
+          if(ele==pr[i]){
+            
+            return false
+          }
+          else{
+            return true
+          }
+          
+        })
+        
+        localStorage.setItem("employees-ls",JSON.stringify(lr))
+        display(lr)
+       })
+    }
+   }
+  </script>
+</html>

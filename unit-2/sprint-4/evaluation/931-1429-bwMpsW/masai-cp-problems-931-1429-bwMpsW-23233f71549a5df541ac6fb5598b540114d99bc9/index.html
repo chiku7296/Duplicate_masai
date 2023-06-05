@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      #employees{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-content: space-between;
+        margin: 5vh 0vw 5vh 5vw;
+        gap: 27px;
+      }
+      #employees>div{
+        width: 100%;
+        text-align: left;
+        padding: 1vw;
+      
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      #employees>div>img{
+        width: 100%;
+      }
+      button{
+        background-color: aqua;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding: 1px;
+        border: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Employee List</h1>
+      <a href="./index.html">Home</a>
+      <a href="./employeeOfMonth.html">Emplyee Of Month</a>
+    </div>
+    <select id="filter">
+      <option value="">Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <div id="employees">
+      <!-- Here Append All the Vouchers  -->
+    </div>
+  </body>
+  <script>
+    Api="https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees"
+    fetchdata();
+    async function fetchdata(){
+      try {
+         res=await fetch(Api);
+         re=await res.json()
+         data=re.data
+        //  console.log(data)
+         display(data)
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    qr=JSON.parse(localStorage.getItem("employees-ls"))||[]
+div=document.getElementById("employees")
+filt=document.getElementById("filter")
+   function display(pr){
+    div.innerHTML=""
+    for(let i=0;i<pr.length;i++){
+      di=document.createElement("div")
+      image=document.createElement("img")
+      nam=document.createElement("h2")
+      salery=document.createElement("h3")
+       gender=document.createElement("h5")
+       depart=document.createElement("h5")
+       button=document.createElement("button")
+
+       image.setAttribute("src",pr[i].image)
+       nam.innerHTML=pr[i].name
+       salery.innerHTML="$"+pr[i].salary
+       gender.innerHTML= "Gender"+":-"+pr[i].gender
+       depart.innerHTML= "Department"+":-"+pr[i].department
+       button.innerHTML="Employee of Month"
+       
+       di.append(image,nam,salery,gender,depart,button)
+       div.append(di)
+
+       button.addEventListener("click",function(){
+        lr=pr.filter((ele)=>{
+          if(ele==pr[i]){
+            qr.push(ele)
+            return ele
+          }
+          
+        })
+        
+        localStorage.setItem("employees-ls",JSON.stringify(qr))
+       })
+    }
+   }
+    filt.addEventListener("change",function(){
+      if(filt.value=="male"){
+        gr=data.filter((ele)=>{
+          if(ele.gender==filt.value){
+            return ele
+          }
+        })
+        display(gr)
+      }
+    else if(filt.value=="female"){
+        gr=data.filter((ele)=>{
+          if(ele.gender==filt.value){
+            return ele
+          }
+        })
+        display(gr)
+      }
+      else{
+        display(data)
+      }
+    })
+    
+  
+  
+  </script>
+</html>

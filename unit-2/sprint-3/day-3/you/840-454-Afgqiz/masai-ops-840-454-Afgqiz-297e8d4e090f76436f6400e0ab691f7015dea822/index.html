@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up Page</title>
+    <style>
+      /* Write all necessery css here  */
+    </style>
+  </head>
+
+  <body>
+    <button id="store-name">Store name to LS</button>
+    <button id="get-name">Get name from LS</button>
+    <h1 id="show-name">
+      <!-- Here Show the Name  -->
+    </h1>
+
+    <button id="store-mob">Store Mobile Num to LS</button>
+    <button id="get-mob">Get Mobile Number from LS</button>
+    <h1 id="show-mob">
+      <!-- Here show the mobile No  -->
+    </h1>
+
+    <button id="store-hobbies">Store Hobbies to LS</button>
+    <button id="get-hobbies">Get Hobbies from LS</button>
+    <h1 id="show-hobbies">
+      <!-- Here show the hobbies  -->
+    </h1>
+
+    <button id="store-students">Store Students to LS</button>
+    <button id="get-students">Get Students from LS</button>
+    <h1 id="show-students">
+      <!-- Here show students  -->
+    </h1>
+  </body>
+  <script>
+    // Write all necessery JS here 
+    strname=document.getElementById("store-name")
+    getname=document.getElementById("get-name")
+    strmob=document.getElementById("store-mob")
+    getmob=document.getElementById("get-mob")
+    strhob=document.getElementById("store-hobbies")
+    gethob=document.getElementById("get-hobbies")
+    strstd=document.getElementById("store-students")
+    getstd=document.getElementById("get-students")
+    showname=document.getElementById("show-name")
+    showmob=document.getElementById("show-mob")
+    showhob=document.getElementById("show-hobbies")
+    showstd=document.getElementById("show-students")
+    strname.addEventListener("click",function(){
+      localStorage.setItem("username","Masai School")
+    })
+
+    strmob.addEventListener("click",function(){
+      localStorage.setItem("mobile","9999999999")
+    })
+    let ar=["cricket","music"]
+    strhob.addEventListener("click",function(){
+      localStorage.setItem("my_hobbies",JSON.stringify(ar))
+    })
+    let pr=[
+    {"name":"Nrupul",place:"Banglore"},
+    {"name":"Prateek",place:"Mumbai"}
+]
+    strstd.addEventListener("click",function(){
+      localStorage.setItem("students",JSON.stringify(pr))
+    })
+    getmob.addEventListener("click",function(){
+      showmob.innerHTML=localStorage.getItem("mobile")
+    })
+  getname.addEventListener("click",function(){
+      showname.innerHTML=localStorage.getItem("username")
+    })
+    gethob.addEventListener("click",function(){
+      showhob.innerHTML=JSON.parse(localStorage.getItem("my_hobbies"))
+    })
+    getstd.addEventListener("click",function(){
+      let k=JSON.parse(localStorage.getItem("students"))
+      showstd.innerHTML=k[0].name + "/"+k[1].name
+    })
+  </script>
+</html>

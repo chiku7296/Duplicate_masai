@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopwatch</title>
+    <style>
+        #flex{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(43, 37, 37);
+            border: 4px solid black;
+            width: 60%;
+            margin: 10vh 0vw 0vh 25vw;
+            padding: 2vw;
+        }
+        #flex>h1{
+            width: 30%;
+            background-color: rgb(33, 228, 163);
+            color: white;
+            text-align: center;
+            font-size: 60px;
+        }
+        h1{
+            text-align: center;
+            margin-top: 5vh;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>my stopwatch</h1>
+    <div id="flex">
+        <h1 id="hour">00</h1>
+        
+        <h1 id="min">00</h1>
+        
+        <h1 id="sec">00</h1>
+    </div>
+    <button id="stop" style="margin: 12vh 0vw 0vh 50vw; font-size: 60px;">stop</button>
+</body>
+<script>
+    btn=document.getElementById("stop")
+    hr=document.getElementById("hour")
+    mn=document.getElementById("min")
+    sc=document.getElementById("sec")
+   var  count=0
+   hour=0
+   minu=0
+   sec=0
+
+  intr=setInterval(()=>{
+         sec++
+         sc.innerHTML=sec
+         if(sc.innerHTML==6){
+            sec=0;
+            sc.innerHTML=sec
+            minu++
+            mn.innerHTML=minu
+            if( mn.innerHTML==6){
+                    minu=0;
+                    mn.innerHTML=minu
+                   hour++ 
+                hr.innerHTML=hour
+                if(hr.innerHTML==12){
+                    hour=0;
+                    hr.innerHTML=hour
+                }
+
+            }
+         }
+         
+  },1000)
+  
+  btn.addEventListener("click",function(){
+    clearInterval(intr)
+    
+  })
+
+</script>
+</html>

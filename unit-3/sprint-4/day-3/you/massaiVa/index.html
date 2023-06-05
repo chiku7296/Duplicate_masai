@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    
+</head>
+<style>
+    #nav{
+        display: flex;
+        justify-content: space-around;
+    }
+    a {
+         text-decoration: none;
+         font-size: 20px;
+         color: blue;
+
+    }
+    fieldset{
+        display: inline-block;
+        width: 15vw;
+    }
+    #form{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        width: 30vw;
+        gap: 15px;
+        margin: 10vh 30vw;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <nav id="nav">
+     <a href="./index.html">loginpage</a>
+     <a href="./dashboard.html">dashboard</a>
+     <a href="./vaccination.html">Vaccination</a>
+     
+    </nav> 
+
+    <form id="form" >
+            <input type="number" id="id" placeholder="unique id" />
+            <input type="text" id="name" placeholder="name">
+            <input type="number"  id="age" placeholder="age between 18 to 40">
+          
+                <label>Selcet Priority</label>
+            <select  id="prty" style="font-size: 20px;">
+                <option value="p0">p0</option>
+                <option value="p1">p1</option>
+                <option value="p2">p2</option>
+                <option value="p3">p3</option>
+            </select>
+            <label>Selcet Vaccine</label>
+            <select  id="vaccine" style="font-size: 20px;">
+                <option value="Covishield">Covishield</option>
+                <option value="Covaxin">Covaxin</option>
+                <option value="Sputnik">Sputnik</option>
+               
+            </select>
+    <button type="submit" style="font-size: 20px; color: rgb(89, 9, 236);background-color: rgb(224, 217, 217);">Register</button>   
+           
+    </form>
+
+     
+</body>
+</html>
+<script src="./index.js"></script> 

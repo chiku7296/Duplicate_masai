@@ -1,0 +1,103 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| practice           |
+| sys                |
++--------------------+
+mysql> create table menu(itemCode varchar(5) primary Key,itemName varchar(20) ,Category varchar(20), price decimal(5,2));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from menu;
+Empty set (0.00 sec)
+mysql> alter table menu add column quantity int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> alter table menu rename column itemName to Name;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> alter table menu_card modify column itemCode int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc menu_card;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| itemCode | int          | NO   | PRI | NULL    |       |
+| Name     | varchar(20)  | YES  |     | NULL    |       |
+| Category | varchar(20)  | YES  |     | NULL    |       |
+| price    | decimal(5,2) | YES  |     | NULL    |       |
+| quantity | int          | YES  |     | NULL    |       |
+| validity | date         | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+mysql> alter table menu_card drop validity;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc menu_card;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| itemCode | int          | NO   | PRI | NULL    |       |
+| Name     | varchar(20)  | YES  |     | NULL    |       |
+| Category | varchar(20)  | YES  |     | NULL    |       |
+| price    | decimal(5,2) | YES  |     | NULL    |       |
+| quantity | int          | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table menu_card rename column quantity to itemQuantity;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc menu_card;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| itemCode     | int          | NO   | PRI | NULL    |       |
+| Name         | varchar(20)  | YES  |     | NULL    |       |
+| Category     | varchar(20)  | YES  |     | NULL    |       |
+| price        | decimal(5,2) | YES  |     | NULL    |       |
+| itemQuantity | int          | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table menu_card modify column Name varchar(20) unique not Null;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc menu_card;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| itemCode     | int          | NO   | PRI | NULL    |       |
+| Name         | varchar(20)  | NO   | UNI | NULL    |       |
+| Category     | varchar(20)  | YES  |     | NULL    |       |
+| price        | decimal(5,2) | YES  |     | NULL    |       |
+| itemQuantity | int          | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from menu_card;
++----------+------+----------+--------+--------------+
+| itemCode | Name | Category | price  | itemQuantity |
++----------+------+----------+--------+--------------+
+|        1 | p    | s        | 345.00 |            2 |
++----------+------+----------+--------+--------------+
+1 row in set (0.00 sec)
+
+mysql> Drop Database practice;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+

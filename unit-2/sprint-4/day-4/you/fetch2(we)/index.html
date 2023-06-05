@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>country</title>
+    <style>
+        #cont{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            margin: 2vh 4vw 0vh 4vw;
+            justify-content: space-between;
+        }
+        #cont>div{
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: auto;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+        h2{
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="cont">
+
+    </div>
+</body>
+<script>
+    const Api="https://restcountries.com/v3.1/all"
+    fetchdata();
+  async function fetchdata(){
+    try {
+        res= await fetch(Api)
+        data= await res.json()
+        display(data)
+    } catch (error) {
+       console.log(error) 
+    }
+       
+  }
+ div=document.getElementById("cont")
+  function display(pr){
+    for(let i=0;i<pr.length;i++){
+        di=document.createElement("div")
+        img=document.createElement("img")
+        h2=document.createElement("h2")
+        img.setAttribute("src",pr[i].flags.png)
+        h2.innerHTML=pr[i].region
+        di.append(img,h2)
+        div.append(di)
+    }
+  }
+</script>
+</html>

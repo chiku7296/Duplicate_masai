@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    
+</head>
+<style>
+    #nav{
+        display: flex;
+        justify-content: space-around;
+    }
+    a {
+         text-decoration: none;
+         font-size: 20px;
+         color: blue;
+
+    }
+    #table{
+        margin: 10vh 10vw;
+        font-size: 30px;
+    } 
+    #tr>th{
+          width: 150px;
+    }
+    #tr>td{
+          width: 150px;
+    }
+   
+    
+</style>
+<body>
+    <nav id="nav">
+     <a href="./index.html">loginpage</a>
+     <a href="./dashboard.html">dashboard</a>
+     <a href="./vaccination.html">Vaccination</a>
+     
+    </nav>
+    <label style="font-size: 20px;">filter by vaccine</label>
+    <select  id="filt" style="font-size: 20px;margin-top: 10vh;">
+        <option value="Covishield">Covishield</option>
+        <option value="Covaxin">Covaxin</option>
+        <option value="Sputnik">Sputnik</option>
+       
+    </select>
+    <label style="font-size: 20px;">sort by age </label>
+    <select  id="sort" style="font-size: 20px;margin-top: 10vh;">
+        <option value="LH">LtoH</option>
+        <option value="HL">HtoL</option>
+     
+       
+    </select>
+
+    <table id="table">
+        <thead>
+            <tr id="tr">
+                <th>
+                    Unique id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age 
+                </th>
+             
+                <th>
+                     Priority
+                </th>
+                <th>
+                     Vaccine
+                </th>
+                <th>
+                    Delete
+                </th>
+                <th>
+                    Vaccinated
+                </th>
+        
+            </tr>
+        </thead>
+        <tbody id="body">
+               
+        </tbody>
+    </table>
+    
+</body>
+</html>
+<script src="./dashboard.js"></script>
